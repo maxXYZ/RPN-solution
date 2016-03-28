@@ -59,4 +59,5 @@ class RpnTest extends PHPUnit_Framework_TestCase
 		];
 	}
 }
+
 ?>
