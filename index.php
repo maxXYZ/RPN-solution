@@ -20,14 +20,11 @@ function RPNcalc($expression) {
 	if (!is_string($expression)) { // это если нет declare(strict_types=1) и подсказок типов
 		throw new Exception(__FUNCTION__.': $expression must be a string'); // а можно просто вернуть 0
 	}
-
-	$expression = trim(preg_replace('/\s+/', ' ', $expression));
-
 	if (!strlen($expression)) {
 		return 0;
 	}
 
-	$expression = explode(' ', $expression);
+	$expression = explode(' ', trim(preg_replace('/\s+/', ' ', $expression)));
 
 	foreach($expression as $k => $v) {
 		if (!(float)$v && $v != '0') {
@@ -59,4 +56,9 @@ function RPNcalc($expression) {
 
 	return $opStack->pop();
 }
+
+echo(RPNcalc("5 8 3 + *")."<br />"); // 55
+echo(RPNcalc("5.5 7 -")."<br />"); // -1.5
+echo(RPNcalc("1 2 / 2 3 + 9 2 - abs 2 ^ 6 7 / - / +")."<br />"); // 0.60385756676558
+echo(RPNcalc("20 4.5 1 2 * - / 2 3 4 * + 1.1 * / 10 * 1 -")); // 4.(194805)
 ?>
