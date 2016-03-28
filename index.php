@@ -21,7 +21,7 @@ function RPNcalc($expression) {
 		'/' 		=>			function ($a, $b) {return $a/$b;}, //TBD: Можно сделать здесь особую обработку деления на ноль
 		'%' 		=>			function ($a, $b) {return $a%$b;},
 		'^' 		=>			function ($a, $b) {return pow($a, $b);},
-		'abs' 		=>			function ($a) {return abs($a);},
+		'abs' 	=>			function ($a) {return abs($a);},
 	];
 
 	if (!is_string($expression)) { // это если нет declare(strict_types=1) и подсказок типов
